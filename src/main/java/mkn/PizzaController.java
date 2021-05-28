@@ -19,8 +19,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RequestMapping(path = "/pizzas")
 public class PizzaController {
-	private PizzaRepository repository;
-	private PizzaService service;
+	private final PizzaRepository repository;
+	private final PizzaService service;
 	
 	@GetMapping
 	public List<Pizza> listAll() {
@@ -28,22 +28,22 @@ public class PizzaController {
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Pizza get(@PathVariable Long id) {
+	public Pizza get(@PathVariable final Long id) {
 		return repository.findById(id).get();
 	}
 	
 	@PostMapping
-	public Pizza create(@RequestBody @Valid CreatePizzaRequest request) {
+	public Pizza create(@RequestBody @Valid final CreatePizzaRequest request) {
 		return service.create(request);
 	}
 	
 	@PutMapping
-	public Pizza update(@RequestBody @Valid UpdatePizzaRequest request) {
+	public Pizza update(@RequestBody @Valid final UpdatePizzaRequest request) {
 		return service.update(request);
 	}
 	
 	@DeleteMapping(path = "/{id}")
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable final Long id) {
 		repository.deleteById(id);
 	}
 	
