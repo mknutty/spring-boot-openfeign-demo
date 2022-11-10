@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-@FeignClient(name = "pizzaClient", url = "http://localhost:8080/pizzas")
+@FeignClient(name = "pizzaClient", url = "http://localhost:${server.port}/pizzas")
 public interface PizzaClient {
 	
 	@GetMapping
